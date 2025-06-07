@@ -109,3 +109,34 @@ hr{
     justify-content: center;
     padding: 10px;
 }
+.forma{
+    width: 100%;
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    align-content: center;
+}
+form{
+    display: block;
+    width: 70%;
+    margin: auto;
+}
+.form-item{
+    width: 50%;
+    margin: auto;
+}
+.title{
+    width: 100%;
+}
+.posalji{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+.posalji button{
+    border-radius: 5px;
+    color: white;
+    background-color: black;
+}
