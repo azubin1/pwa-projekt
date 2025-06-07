@@ -10,10 +10,6 @@ header{
     width: 70%;
     margin: auto;
 }
-nav{
-    position: flex;
-}
-
 #logo{
     position: relative;
     float: left;
@@ -48,32 +44,43 @@ nav a:hover{
 .bclanka{
     display: block;
     margin: 20px 0;
-
 }
 .podstranica{
     color: black;
     text-decoration: none;
 }
+.slika{
+    overflow: hidden;
+    height: 100px;
+    width: 100%;
+}
+.bclanka a{
+    color: black;
+    text-decoration: none;
+    width: 32%;
+}
+.bclanka a p{
+    color: rgb(222, 0, 0);
+    font-size: small;
+    padding-top: 7px;
+}
 .bclanka section{
     display: flex;
-    padding: 10px;
-    padding-left: 0;
-    padding-right: 0;
+    justify-content: space-between;
     margin-bottom: 50px;
 }
 .bclanka article{
-    width: 30%;
+    width: 100%;
     margin: auto;
-    margin-left: 0;
 }
 .bclanka img{
     width: 100%;
 }
-.bclanka a{
-    width: 100%;
-}
 h2{
     font-size: 35px;
+}
+h3{
+    font-size: medium;
 }
 .podnozje{
     display: flex;
