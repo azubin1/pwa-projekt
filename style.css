@@ -135,8 +135,13 @@ form{
     justify-content: space-between;
     width: 100%;
 }
-.posalji button{
+.posalji input{
     border-radius: 5px;
     color: white;
     background-color: black;
+}
+.kategorija{
+    color: rgb(222, 0, 0);
+    font-size: small;
+    padding-top: 7px;
 }

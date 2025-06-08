@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>Početna</title>
+    <title>Unos</title>
 </head>
 <body>
     <div class="centriraj">
@@ -34,31 +34,31 @@
                 <div class="form-item">
                     <label for="title">Naslov vijesti</label>
                     <div class="form-field">
-                        <input type="text" name="title" id="title" class="form-field-textual" autofocus>
+                        <input type="text" name="naslov" id="naslov" class="form-field-textual" autofocus required>
                     </div>
                 </div>
                 <div class="form-item">
                     <label for="about">Kratki sadržaj vijesti (do 50 znakova)</label>
                     <div class="form-field">
-                        <textarea name="about" id="" cols="30" rows="10" class="form-field-textual"></textarea>
+                        <textarea name="kratkis" id="kratkis" cols="30" rows="10" class="form-field-textual" required></textarea>
                     </div>
                 </div>
                 <div class="form-item">
                     <label for="content">Sadržaj vijesti</label>
                     <div class="form-field">
-                        <textarea name="content" id="" cols="30" rows="10" class="form-field-textual"></textarea>
+                        <textarea name="sadrzaj" id="sadrzaj" cols="30" rows="10" class="form-field-textual" required></textarea>
                     </div>
                 </div>
                 <div class="form-item">
                     <label for="photo">Slika: </label>
                     <div class="form-field">
-                        <input type="file" accept="image/jpg,image/gif" class="input-text" name="photo"/>
+                        <input type="file" accept="image/jpg,image/gif" class="input-text" name="slika"/>
                     </div>
                 </div>
                 <div class="form-item">
                     <label for="category">Kategorija vijesti</label>
                     <div class="form-field">
-                        <select name="category" id="" class="form-field-textual">
+                        <select name="kategorija" id="kategorija" class="form-field-textual" required>
                             <option value="politika">Politika</option>
                             <option value="zdravlje">Zdravlje</option>
                             <option value="administracija">Administracija</option>
@@ -68,13 +68,13 @@
                 <div class="form-item">
                     <label>Prikazati na stranici
                         <div class="form-field">
-                            <input type="checkbox" name="archive">
+                            <input type="checkbox" name="prikaz">
                         </div>
                     </label>
                 </div>
                 <div class="form-item posalji">
-                    <button type="reset" value="Poništi">Poništi</button>
-                    <button type="submit" value="Prihvati">Prihvati</button>
+                    <input type="reset" value="Poništi" name="ponisti">
+                    <input type="submit" value="Pošalji" name="posalji">
                 </div>
             </form> 
         </section>
