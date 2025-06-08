@@ -133,15 +133,23 @@ form{
 .posalji{
     display: flex;
     justify-content: space-between;
-    width: 100%;
 }
-.posalji input{
+.posalji button{
     border-radius: 5px;
     color: white;
     background-color: black;
 }
-.kategorija{
+#kategorija{
     color: rgb(222, 0, 0);
     font-size: small;
     padding-top: 7px;
+    text-transform: uppercase;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 350;
+}
+textarea{
+    width: 100%;
+}
+input{
+    width: 100%;
 }

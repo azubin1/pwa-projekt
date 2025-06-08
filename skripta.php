@@ -47,7 +47,7 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
             </nav>
         </header>
         <section class="tekstclanka">
-            <p class="kategorija">
+            <p id="kategorija">
                 <?php
                     echo $kategorija;
                 ?>
@@ -63,10 +63,9 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
                 ?>
             </p>
             <img 
-            src="slike/
-                <?php
-                    echo $slika;
-                ?>" 
+            <?php
+                echo 'src="slike/'.$slika.'"';
+            ?>
             alt="
                 <?php
                     echo $slika;
