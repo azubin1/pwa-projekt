@@ -40,6 +40,9 @@ nav a{
 nav a:hover{
     color: red;
 }
+#crven{
+    color: red;
+}
 .clanci{
     margin: 0;
     padding: 0;
@@ -54,7 +57,7 @@ nav a:hover{
 }
 .slika{
     overflow: hidden;
-    height: 100px;
+    height: 200px;
     width: 100%;
 }
 .bclanka a{
@@ -66,6 +69,7 @@ nav a:hover{
     color: rgb(222, 0, 0);
     font-size: small;
     padding-top: 7px;
+    text-transform: uppercase;
 }
 .bclanka section{
     display: flex;
@@ -107,7 +111,7 @@ hr{
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 10px;
+    padding: 20px;
 }
 .forma{
     width: 100%;
@@ -127,6 +131,31 @@ form{
     width: 50%;
     margin: auto;
 }
+@media only screen and (max-width:800px){
+    form{
+        display: block;
+        width: 100%;
+        margin: auto;
+    }
+
+    .form-item{
+        width: 70%;
+        margin: auto;
+    }
+    .slika{
+        overflow: hidden;
+        height: 100px;
+        width: 100%;
+    }
+}
+@media only screen and (max-width:1300px){
+    .slika{
+        overflow: hidden;
+        height: 150px;
+        width: 100%;
+    }
+}
+    
 .title{
     width: 100%;
 }
@@ -152,4 +181,7 @@ textarea{
 }
 input{
     width: 100%;
+}
+#arhiva{
+    width: min-content;
 }

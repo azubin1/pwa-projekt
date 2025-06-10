@@ -1,13 +1,13 @@
 <?php
 $poruka="";
 
-if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_POST['kategorija'],$_POST['prikaz'])){
+if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_POST['kategorija'],$_POST['arhiva'])){
     $naslov=$_POST['naslov'];
     $kratkis=$_POST['kratkis'];
     $sadrzaj=$_POST['sadrzaj'];
     $slika=$_POST['slika'];
     $kategorija=$_POST['kategorija'];
-    $prikaz=$_POST['prikaz'];
+    $arhiva=$_POST['arhiva'];
 }
 ?>
 
@@ -16,7 +16,7 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -37,10 +37,10 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.html">Početna</a>
-                            <a href="politika.html">Politika</a>
-                            <a href="#">Zdravlje</a>
-                            <a href="#">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="kategorija.php?id=politika">Politika</a>
+                            <a href="kategorija.php?id=zdravlje">Zdravlje</a>
+                            <a href="administrator.php">Administracija</a>
+                            <a href="unos.php">Unos vijesti</a>
                         </div>
                     </div>
                 </div>

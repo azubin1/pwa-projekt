@@ -1,9 +1,34 @@
+<?php
+include 'connect.php';
+
+$naslov=$_POST['naslov'];
+$sazetak=$_POST['sazetak'];
+$sadrzaj=$_POST['sadrzaj'];
+$slika=$_FILES['slika']['name'];
+$kategorija=$_POST['kategorija'];
+$datum=date('d.m.Y');
+if(isset($_POST['arhiva'])){
+    $arhiva=1;
+}else{
+    $arhiva=0;
+}
+
+$direktorij='slike/'.$slika;
+move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
+
+$upit="INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva
+    VALUES ('$datum', '$naslov', '$sazetak', '$sadrzaj', '$slika', '$kategorija', '$arhiva')";
+
+$rezultat=mysqli_query($con,$upit) or die('Greška u povezivanju');
+mysqli_close($con);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../style.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -20,17 +45,17 @@
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.html">Početna</a>
-                            <a href="politika.html">Politika</a>
-                            <a href="#">Zdravlje</a>
-                            <a href="#">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="kategorija.php?id=politika">Politika</a>
+                            <a href="kategorija.php?id=zdravlje">Zdravlje</a>
+                            <a href="administrator.php">Administracija</a>
+                            <a href="unos.php">Unos vijesti</a>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
         <section class="forma">
-            <form action="skripta.php" method="POST">
+            <form enctype="multipart/form-data" action="skripta.php" method="POST">
                 <div class="form-item">
                     <label for="title">Naslov vijesti</label>
                     <div class="form-field">
@@ -40,7 +65,7 @@
                 <div class="form-item">
                     <label for="about">Kratki sadržaj vijesti (do 50 znakova)</label>
                     <div class="form-field">
-                        <textarea name="kratkis" id="kratkis" cols="30" rows="10" class="form-field-textual" required></textarea>
+                        <textarea name="sazetak" id="sazetak" cols="30" rows="10" class="form-field-textual" required></textarea>
                     </div>
                 </div>
                 <div class="form-item">
@@ -52,7 +77,7 @@
                 <div class="form-item">
                     <label for="photo">Slika: </label>
                     <div class="form-field">
-                        <input type="file" accept="image/jpg,image/gif" class="input-text" name="slika"/>
+                        <input type="file" accept="image/*" class="input-text" name="slika"/>
                     </div>
                 </div>
                 <div class="form-item">
@@ -66,9 +91,9 @@
                     </div>
                 </div>
                 <div class="form-item">
-                    <label>Prikazati na stranici
+                    <label>Spremiti u arhivu: 
                         <div class="form-field">
-                            <input type="checkbox" name="prikaz">
+                            <input type="checkbox" name="arhiva" id="arhiva">
                         </div>
                     </label>
                 </div>
