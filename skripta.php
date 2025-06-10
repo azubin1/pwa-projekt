@@ -36,7 +36,7 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
                     <br><br><br>
                     <div class="plutaj">
                         <div class="dolje">
-                            <a href="index.html">Početna</a>
+                            <a href="index.php">Početna</a>
                             <a href="kategorija.php?id=politika">Politika</a>
                             <a href="kategorija.php?id=zdravlje">Zdravlje</a>
                             <a href="administrator.php">Administracija</a>

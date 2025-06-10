@@ -11,6 +11,5 @@ $con = mysqli_connect($servername, $username, $password, $baza) or die('Greška 
 mysqli_set_charset($con, "utf8");
 
 if($con){
-    echo "Povezano!";
 }
 ?>

@@ -9,7 +9,7 @@ define('direktorij', 'slike/');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css?">
+    <link rel="stylesheet" href="style.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -39,65 +39,43 @@ define('direktorij', 'slike/');
             <div class="bclanka">
                 <h2><a href="#" class="podstranica">POLITIKA ></a></h2>
                 <section>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/politika1.jpg" alt="politika 2">
-                            </div>
-                            <p>FIA</p>
-                            <h3>FIA postrožio sankcije za izražavanje političkih stavova</h3>
-                        </article>
-                    </a>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/politika2.jpg" alt="politika 2">
-                            </div>
-                            <p>MCLAREN</p>
-                            <h3>Donald Trump posjetio McLaren garažu na Velikoj nagradi Miamija</h3>
-                        </article>
-                    </a>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/politika3.jpg" alt="politika 3">
-                            </div>
-                            <p>BRIATORE</p>
-                            <h3>FIA poništio doživotnu zabranu sudjelovanja u Formuli 1 Flaviu Briatiore</h3>
-                        </article>
-                    </a>
+                    <?php
+                        $upitp="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='politika' LIMIT 3";
+                        $odgp=mysqli_query($con, $upitp);
+                        while($red=mysqli_fetch_array($odgp)){
+                            echo '<a href="#">';
+                                echo '<article>';
+                                    echo '<div class="slika">';
+                                        echo '<img src="' .direktorij. $red['slika']. 'alt='.$red['slika'].'>' ;
+                                    echo '</div>';
+                                    echo '<p>'.$red['kategorija'].'</p>';
+                                    echo '<h3>'. $red['naslov']. '</h3>';
+                                echo '</article>';
+                            echo '</a>';
+
+                        }
+                    ?>
                 </section>
             </div>
             <div class="bclanka">
                 <h2><a href="#" class="podstranica">ZDRAVLJE ></a></h2>
                 <section>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/zdravlje1.jpg" alt="zdravlje 1">
-                            </div>
-                            <p>DUGOTRAJNI PROBLEMI</p>
-                            <h3>Vozači zabrinuti za svoje zdravlje nakon umirovljenja </h3>
-                        </article>
-                    </a>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/zdravlje2.jpg" alt="zdravlje 2">
-                            </div>
-                            <p>VOZILA</p>
-                            <h3>Aston Martin DBX707 postao službeni medicinski automobil Formule 1</h3>
-                        </article>
-                    </a>
-                    <a href="clanak.html">
-                        <article>
-                            <div class="slika">
-                                <img src="slike/zdravlje3.jpg" alt="zdravlje 3">
-                            </div>
-                            <p>NESREĆA</p>
-                            <h3>Vozač Jack Doohan bez posljedica nakon velike nesreće na Velikoj nagradi Japana</h3>
-                        </article>
-                    </a>
+                    <?php
+                        $upitp="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='zdravlje' LIMIT 3";
+                        $odgp=mysqli_query($con, $upitp);
+                        while($red=mysqli_fetch_array($odgp)){
+                            echo '<a href="clanak.php?id=' .$red['id'].'">';
+                                echo '<article>';
+                                    echo '<div class="slika">';
+                                        echo '<img src="' .direktorij. $red['slika']. 'alt='.$red['slika'].'>' ;
+                                    echo '</div>';
+                                    echo '<p>'.$red['kategorija'].'</p>';
+                                    echo '<h3>'. $red['naslov']. '</h3>';
+                                echo '</article>';
+                            echo '</a>';
+
+                        }
+                    ?>
                 </section>
             </div>
         </section>

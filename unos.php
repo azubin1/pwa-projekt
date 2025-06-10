@@ -1,34 +1,9 @@
-<?php
-include 'connect.php';
-
-$naslov=$_POST['naslov'];
-$sazetak=$_POST['sazetak'];
-$sadrzaj=$_POST['sadrzaj'];
-$slika=$_FILES['slika']['name'];
-$kategorija=$_POST['kategorija'];
-$datum=date('d.m.Y');
-if(isset($_POST['arhiva'])){
-    $arhiva=1;
-}else{
-    $arhiva=0;
-}
-
-$direktorij='slike/'.$slika;
-move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
-
-$upit="INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva
-    VALUES ('$datum', '$naslov', '$sazetak', '$sadrzaj', '$slika', '$kategorija', '$arhiva')";
-
-$rezultat=mysqli_query($con,$upit) or die('Greška u povezivanju');
-mysqli_close($con);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style.css?">
+    <link rel="stylesheet" href="style.css?">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
@@ -44,7 +19,7 @@ mysqli_close($con);
                     <br><br><br>
                     <div class="plutaj">
                         <div class="dolje">
-                            <a href="index.html">Početna</a>
+                            <a href="index.php">Početna</a>
                             <a href="kategorija.php?id=politika">Politika</a>
                             <a href="kategorija.php?id=zdravlje">Zdravlje</a>
                             <a href="administrator.php">Administracija</a>
@@ -55,7 +30,7 @@ mysqli_close($con);
             </nav>
         </header>
         <section class="forma">
-            <form enctype="multipart/form-data" action="skripta.php" method="POST">
+            <form enctype="multipart/form-data" action="" method="POST">
                 <div class="form-item">
                     <label for="title">Naslov vijesti</label>
                     <div class="form-field">
@@ -83,10 +58,9 @@ mysqli_close($con);
                 <div class="form-item">
                     <label for="category">Kategorija vijesti</label>
                     <div class="form-field">
-                        <select name="kategorija" id="kategorije" class="form-field-textual" required>
+                        <select name="kategorija" id="kategorija" class="form-field-textual" required>
                             <option value="politika">Politika</option>
                             <option value="zdravlje">Zdravlje</option>
-                            <option value="administracija">Administracija</option>
                         </select>
                     </div>
                 </div>
@@ -109,3 +83,30 @@ mysqli_close($con);
     </div>
 </body>
 </html>
+<?php
+include 'connect.php';
+
+if(isset($_POST['naslov'],$_POST['sazetak'],$_POST['sadrzaj'],$_POST['slika'],$_POST['kategorija'])){
+    $naslov=$_POST['naslov'];
+    $sazetak=$_POST['sazetak'];
+    $sadrzaj=$_POST['sadrzaj'];
+    $slika=$_FILES['slika']['name'];
+    $kategorija=$_POST['kategorija'];
+    $datum=date('d.m.Y');
+    if(isset($_POST['arhiva'])){
+        $arhiva=1;
+    }else{
+        $arhiva=0;
+    }
+
+    $direktorij='slike/'.$slika;
+    move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
+
+    $upit="INSERT INTO vijesti (datum, naslov, sazetak, tekst, slika, kategorija, arhiva
+        VALUES ('$datum', '$naslov', '$sazetak', '$sadrzaj', '$slika', '$kategorija', '$arhiva')";
+
+    $rezultat=mysqli_query($con,$upit) or die('Greška u povezivanju');
+}
+
+mysqli_close($con);
+?>
