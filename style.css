@@ -54,6 +54,7 @@ nav a:hover{
 .podstranica{
     color: black;
     text-decoration: none;
+    text-transform: uppercase;
 }
 .slika{
     overflow: hidden;
@@ -184,4 +185,15 @@ input{
 }
 #arhiva{
     width: min-content;
+}
+.naslovdatum{
+    display: flex;
+    justify-content: space-between;
+}
+.tekstclanka div p{
+    font-family: 'Oswald', sans-serif;
+    font-size: smaller;
+    color: gray;
+    display: flex;
+    align-items: flex-end;
 }

@@ -25,11 +25,11 @@ define('direktorij', 'slike/');
                     <br><br><br>
                     <div class="plutaj">
                         <div class="dolje">
-                            <a href="index.html">Početna</a>
+                            <a href="index.php">Početna</a>
                             <a href="kategorija.php?id=politika">Politika</a>
                             <a href="kategorija.php?id=zdravlje">Zdravlje</a>
                             <a href="administrator.php">Administracija</a>
-                            <a href="unos.php">Unos vijesti</a>
+                            <a href="unos.html">Unos vijesti</a>
                         </div>
                     </div>
                 </div>
@@ -37,43 +37,59 @@ define('direktorij', 'slike/');
         </header>
         <section class="clanci">
             <div class="bclanka">
-                <h2><a href="#" class="podstranica">POLITIKA ></a></h2>
+                <h2><a href="kategorija.php?id=politika" class="podstranica">POLITIKA ></a></h2>
                 <section>
                     <?php
                         $upitp="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='politika' LIMIT 3";
-                        $odgp=mysqli_query($con, $upitp);
+                        $odgp=mysqli_query($con, $upitp);  
                         while($red=mysqli_fetch_array($odgp)){
-                            echo '<a href="#">';
-                                echo '<article>';
-                                    echo '<div class="slika">';
-                                        echo '<img src="' .direktorij. $red['slika']. 'alt='.$red['slika'].'>' ;
-                                    echo '</div>';
-                                    echo '<p>'.$red['kategorija'].'</p>';
-                                    echo '<h3>'. $red['naslov']. '</h3>';
-                                echo '</article>';
-                            echo '</a>';
-
+                            echo '<a href="clanak.php?id='.$red['id'].'" target="_blank">
+                                ';
+                            echo '<article>
+                                ';
+                            echo '<div class="slika">
+                                ';
+                            echo '<img src="' .direktorij. $red['slika']. '" alt='.$red['slika'].'>
+                            ' ;
+                            echo '</div>
+                            ';
+                            echo '<p>'.$red['kategorija'].'</p>
+                            ';
+                            echo '<h3>'. $red['naslov']. '</h3>
+                            ';
+                            echo '</article>
+                            ';
+                            echo '</a>
+                            ';
                         }
                     ?>
                 </section>
             </div>
             <div class="bclanka">
-                <h2><a href="#" class="podstranica">ZDRAVLJE ></a></h2>
+                <h2><a href="kategorija.php?id=zdravlje" class="podstranica">ZDRAVLJE ></a></h2>
                 <section>
                     <?php
-                        $upitp="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='zdravlje' LIMIT 3";
-                        $odgp=mysqli_query($con, $upitp);
-                        while($red=mysqli_fetch_array($odgp)){
-                            echo '<a href="clanak.php?id=' .$red['id'].'">';
-                                echo '<article>';
-                                    echo '<div class="slika">';
-                                        echo '<img src="' .direktorij. $red['slika']. 'alt='.$red['slika'].'>' ;
-                                    echo '</div>';
-                                    echo '<p>'.$red['kategorija'].'</p>';
-                                    echo '<h3>'. $red['naslov']. '</h3>';
-                                echo '</article>';
-                            echo '</a>';
-
+                        $upitz="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='zdravlje' LIMIT 3";
+                        $odgz=mysqli_query($con, $upitz);
+                        while($red=mysqli_fetch_array($odgz)){
+                            echo '<a href="clanak.php?id='.$red['id'].'" target="_blank">
+                                ';
+                            echo '<article>
+                                ';
+                            echo '<div class="slika">
+                                ';
+                            echo '<img src="' .direktorij. $red['slika']. '" alt='.$red['slika'].'>
+                            ' ;
+                            echo '</div>
+                            ';
+                            echo '<p>'.$red['kategorija'].'</p>
+                            ';
+                            echo '<h3>'. $red['naslov']. '</h3>
+                            ';
+                            echo '</article>
+                            ';
+                            echo '</a>
+                            ';
                         }
                     ?>
                 </section>

@@ -1,15 +1,31 @@
 <?php
-$poruka="";
+include 'connect.php';
 
-if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_POST['kategorija'],$_POST['arhiva'])){
+if(isset($_POST['naslov'],$_POST['sazetak'],$_POST['sadrzaj'],$_FILES['slika']['name'],$_POST['kategorija'])){
     $naslov=$_POST['naslov'];
-    $kratkis=$_POST['kratkis'];
+    $sazetak=$_POST['sazetak'];
     $sadrzaj=$_POST['sadrzaj'];
-    $slika=$_POST['slika'];
+    $slika=$_FILES['slika']['name'];
     $kategorija=$_POST['kategorija'];
-    $arhiva=$_POST['arhiva'];
+    $datum=date('d.m.Y');
+    if(isset($_POST['arhiva'])){
+        $arhiva=1;
+    }else{
+        $arhiva=0;
+    }
+
+    $direktorij='slike/'.$slika;
+    move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
+
+    $upit="INSERT INTO vijesti (datum, naslov, sazetak, sadrzaj, slika, kategorija, arhiva)
+        VALUES ('$datum', '$naslov', '$sazetak', '$sadrzaj', '$slika', '$kategorija', '$arhiva')";
+
+    $rezultat=mysqli_query($con,$upit) or die('Greška u povezivanju');
 }
+
+mysqli_close($con);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -40,26 +56,33 @@ if(isset($_POST['naslov'],$_POST['kratkis'],$_POST['sadrzaj'],$_POST['slika'],$_
                             <a href="kategorija.php?id=politika">Politika</a>
                             <a href="kategorija.php?id=zdravlje">Zdravlje</a>
                             <a href="administrator.php">Administracija</a>
-                            <a href="unos.php">Unos vijesti</a>
+                            <a href="unos.html">Unos vijesti</a>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
         <section class="tekstclanka">
-            <p id="kategorija">
+            <p id="kategorije">
                 <?php
                     echo $kategorija;
                 ?>
             </p>
-            <h1>
-                <?php
-                    echo $naslov;
-                ?>
-            </h1>
+            <div class="naslovdatum">
+                <h1>
+                    <?php
+                        echo $naslov;
+                    ?>
+                </h1>
+                <p>
+                    <?php
+                        echo $datum;
+                    ?>
+                </p>
+            </div>
             <p id="ispodnaslova">
                 <?php
-                    echo $kratkis;
+                    echo $sazetak;
                 ?>
             </p>
             <img 
