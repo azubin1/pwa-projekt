@@ -76,6 +76,7 @@ nav a:hover{
     display: flex;
     justify-content: space-between;
     margin-bottom: 50px;
+    width: 100%;
 }
 .bclanka article{
     width: 100%;
@@ -196,4 +197,11 @@ input{
     color: gray;
     display: flex;
     align-items: flex-end;
+}
+.titl{
+    text-transform: uppercase;
+}
+.brejk{
+    display: block;
+    width: 100%;
 }

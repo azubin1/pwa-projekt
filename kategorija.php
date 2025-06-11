@@ -1,10 +1,9 @@
 <?php
 include 'connect.php';
 define('direktorij', 'slike/');
-
-$kategorija=$_GET['kategorija']; 
-$upit="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija=$kategorija";
-$odg=mysqli_query($con, $upit); 
+$kategorija=$_GET['kategorija'];
+$upit="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='$kategorija'";
+$odg=mysqli_query($con, $upit);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,12 @@ $odg=mysqli_query($con, $upit);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>Početna</title>
+    <title class="titl">
+        <?php
+            $kategorija = ucwords(strtolower($kategorija));
+            echo $kategorija;
+        ?>
+    </title>
 </head>
 <body>
     <div class="centriraj">
@@ -45,8 +49,10 @@ $odg=mysqli_query($con, $upit);
                     ?>
                 </h2>
                 <section>
-                    <?php 
+                    <?php
+                    $i=0;
                         while($red=mysqli_fetch_array($odg)){
+                            $i++;
                             echo '<a href="clanak.php?id='.$red['id'].'" target="_blank">
                                 ';
                             echo '<article>
@@ -65,6 +71,9 @@ $odg=mysqli_query($con, $upit);
                             ';
                             echo '</a>
                             ';
+                            if($i%3==0){
+                                echo '</section><section>';
+                            }
                         }
                     ?>
                 </section>

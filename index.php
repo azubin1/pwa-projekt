@@ -26,8 +26,8 @@ define('direktorij', 'slike/');
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
-                            <a href="kategorija.php?id=politika">Politika</a>
-                            <a href="kategorija.php?id=zdravlje">Zdravlje</a>
+                            <a href="kategorija.php?kategorija=politika">Politika</a>
+                            <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administrator.php">Administracija</a>
                             <a href="unos.html">Unos vijesti</a>
                         </div>
@@ -37,7 +37,7 @@ define('direktorij', 'slike/');
         </header>
         <section class="clanci">
             <div class="bclanka">
-                <h2><a href="kategorija.php?id=politika" class="podstranica">POLITIKA ></a></h2>
+                <h2><a href="kategorija.php?kategorija=politika" class="podstranica">POLITIKA ></a></h2>
                 <section>
                     <?php
                         $upitp="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='politika' LIMIT 3";
@@ -66,7 +66,7 @@ define('direktorij', 'slike/');
                 </section>
             </div>
             <div class="bclanka">
-                <h2><a href="kategorija.php?id=zdravlje" class="podstranica">ZDRAVLJE ></a></h2>
+                <h2><a href="kategorija.php?kategorija=zdravlje" class="podstranica">ZDRAVLJE ></a></h2>
                 <section>
                     <?php
                         $upitz="SELECT * FROM vijesti WHERE arhiva=0 AND kategorija='zdravlje' LIMIT 3";
