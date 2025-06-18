@@ -160,13 +160,13 @@ if(isset($_POST['izmjeni'])){
         $arhiva=0;
     }
 
+
     $direktorij='slike/'.$slika;
     move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
 
-    $izmjena="UPDATE vijesti SET naslov='$naslov', sazetak='$sazetak', sadrzaj='$sadrzaj', slika='$slika', kategorija='$kategorija', arhiva='$arhiva'
+    $izmjena="UPDATE vijesti SET naslov='$naslov', sazetak='$sazetak', sadrzaj='$sadrzaj', slika='$slika', kategorija='$kategorija', arhiva='$arhiva', datum='$datum'
     WHERE id='$id'";
 
     $izmjenjeno=mysqli_query($con,$izmjena) or die('Greška u povezivanju');
-}
 }
 ?>
