@@ -30,6 +30,7 @@ define('direktorij', 'slike/');
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
                             <a href="unos.html">Unos vijesti</a>
+                            <a href="prijava.php">Prijava</a>
                         </div>
                     </div>
                 </div>
@@ -95,7 +96,7 @@ define('direktorij', 'slike/');
                 </section>
             </div>
         </section>
-        <footer class="podnozje">
+        <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>
         </footer>
     </div>

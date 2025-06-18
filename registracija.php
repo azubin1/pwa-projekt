@@ -7,7 +7,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>Unos vijesti</title>
+    <title>Prijava</title>
 </head>
 <body>
     <div class="centriraj">
@@ -30,53 +30,43 @@
                 </div>
             </nav>
         </header>
-        <section class="forma">
-            <form enctype="multipart/form-data" action="skripta.php" method="POST">
+        <section class="prijava">
+            <form enctype="multipart/form-data" action="" method="POST">
                 <div class="form-item">
-                    <label for="naslov">Naslov vijesti</label>
+                    <label for="ime">Ime: </label>
                     <div class="form-field">
-                        <input type="text" name="naslov" id="naslov" class="form-field-textual" autofocus required>
+                        <input type="text" name="ime" id="ime" class="form-field-textual" autofocus required>
                     </div>
                 </div>
                 <div class="form-item">
-                    <label for="sazetak">Kratki sadržaj vijesti (do 50 znakova)</label>
+                    <label for="prezime">Prezime: </label>
                     <div class="form-field">
-                        <textarea name="sazetak" id="sazetak" cols="30" rows="10" class="form-field-textual" required></textarea>
+                        <input type="text" name="prezime" id="prezime" class="form-field-textual" required>
                     </div>
                 </div>
                 <div class="form-item">
-                    <label for="sadrzaj">Sadržaj vijesti</label>
+                    <label for="korisnicko_ime">Korisničko ime: </label>
                     <div class="form-field">
-                        <textarea name="sadrzaj" id="sadrzaj" cols="30" rows="10" class="form-field-textual" required></textarea>
+                        <input type="text" name="korisnicko_ime" id="korisnicko_ime" class="form-field-textual" required>
                     </div>
                 </div>
                 <div class="form-item">
-                    <label for="slika">Slika: </label>
+                    <label for="lozinka">Lozinka: </label>
                     <div class="form-field">
-                        <input type="file" accept="image/*" class="input-text" name="slika" id="slika" required/>
+                        <input type="password" name="lozinka" id="lozinka" class="form-field" required>
                     </div>
                 </div>
                 <div class="form-item">
-                    <label for="kategorija">Kategorija vijesti</label>
+                    <label for="lozinka">Ponovi lozinku: </label>
                     <div class="form-field">
-                        <select name="kategorija" id="kategorija" class="form-field-textual" required>
-                            <option value="politika">Politika</option>
-                            <option value="zdravlje">Zdravlje</option>
-                        </select>
+                        <input type="password" name="lozinka" id="lozinka" class="form-field" required>
                     </div>
-                </div>
-                <div class="form-item lijevo">
-                    <label for="arhiva">Spremiti u arhivu: 
-                        <div class="form-field">
-                            <input type="checkbox" name="arhiva" id="arhiva">
-                        </div>
-                    </label>
                 </div>
                 <div class="form-item posalji">
                     <button type="reset" value="Poništi">Poništi</button> 
-                    <button type="submit" value="Prihvati">Prihvati</button> 
+                    <button type="submit" value="Registriraj">Registriraj se</button> 
                 </div>
-            </form> 
+            </form>
         </section>
         <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>

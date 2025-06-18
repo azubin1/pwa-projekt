@@ -38,6 +38,7 @@ $red=mysqli_fetch_array($odg);
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
                             <a href="unos.html">Unos vijesti</a>
+                            <a href="prijava.php">Prijava</a>
                         </div>
                     </div>
                 </div>
@@ -80,9 +81,9 @@ $red=mysqli_fetch_array($odg);
                     <div class="form-field">
                         <input type="file" accept="image/*" class="input-text" name="slika" id ="slika" 
                             <?php
-                                echo ' value="'. $red['slika']. '" ';
+                                echo ' value="'. $red['slika']. '"';
                             ?>
-                        required>
+                        >
                         <br>
                         <br>
                         <img
@@ -123,8 +124,9 @@ $red=mysqli_fetch_array($odg);
                 <div class="sire">
                     <input type="hidden" name="id" class="form-field-textual" 
                         <?php
-                            echo 'value="'.$red['id'].'"> ';
+                            echo 'value="'.$red['id'].'" ';
                         ?>
+                    >
                 </div>
                 <div class="sire posalji">
                     <button type="reset" value="Poništi">Poništi</button>
@@ -133,7 +135,7 @@ $red=mysqli_fetch_array($odg);
                 </div>
             </form>
         </section>
-        <footer class="podnozje">
+        <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>
         </footer>
     </div>
@@ -145,6 +147,8 @@ if(isset($_POST['izbrisi'])){
     $id=$_POST['id'];
     $brisi="DELETE FROM vijesti WHERE id=$id ";
     $izbrisano=mysqli_query($con, $brisi);
+    $zatvori = file_get_contents('administracija.php');
+    echo $zatvori;
 }
 
 if(isset($_POST['izmjeni'])){

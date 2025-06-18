@@ -1,13 +1,3 @@
-<?php
-include 'connect.php';
-define('direktorij', 'slike/');
-
-$id=$_GET['id'];
-$upit = "SELECT * FROM vijesti WHERE id=$id";
-$odg=mysqli_query($con, $upit);
-$red=mysqli_fetch_array($odg);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +7,7 @@ $red=mysqli_fetch_array($odg);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>
-        <?php
-         echo $red['naslov'];
-        ?>
-    </title>
+    <title>Prijava</title>
 </head>
 <body>
     <div class="centriraj">
@@ -37,45 +23,35 @@ $red=mysqli_fetch_array($odg);
                             <a href="kategorija.php?kategorija=politika">Politika</a>
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="unos.php">Unos vijesti</a>
                             <a href="prijava.php">Prijava</a>
                         </div>
                     </div>
                 </div>
             </nav>
         </header>
-        <section class="tekstclanka">
-            <p id="kategorije">
-                <?php
-                    echo $red['kategorija'];
-                ?>
-            </p>
-            <div class="naslovdatum">
-                <h1>
-                    <?php
-                        echo $red['naslov'];
-                    ?>
-                </h1>
-                <p>
-                    <?php
-                        echo $red['datum'];
-                    ?>
-                </p>
-            </div>
-                <p id="ispodnaslova">
-                    <?php
-                        echo $red['sazetak'];
-                    ?>
-                </p>
-                <?php
-                    echo '<img src="' .direktorij. $red['slika']. '" alt='.$red['slika'].' class="clanakslika">' ;
-                ?>
-            <hr>
-            <p>
-                <?php
-                    echo $red['sadrzaj'];
-                ?>
-            </p>
+        <section class="prijava">
+            <form enctype="multipart/form-data" action="" method="POST">
+                <div class="form-item">
+                    <label for="korisnicko_ime">Korisničko ime: </label>
+                    <div class="form-field">
+                        <input type="text" name="korisnicko_ime" id="korisnicko_ime" class="form-field-textual" autofocus required>
+                    </div>
+                </div>
+                <div class="form-item">
+                    <label for="lozinka">Lozinka: </label>
+                    <div class="form-field">
+                        <input type="password" name="lozinka" id="lozinka" class="form-field" required>
+                    </div>
+                </div>
+                <div class="form-item posalji">
+                    <button type="reset" value="Poništi">Poništi</button> 
+                    <button type="submit" value="Prijava">Prijavi se</button> 
+                </div>
+            </form>
+        </section>
+        <section id=registrirajse>
+            <a href="registracija.php">Nemaš račun?</a>
         </section>
         <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>
