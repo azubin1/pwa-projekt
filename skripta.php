@@ -55,7 +55,7 @@ mysqli_close($con);
                             <a href="index.php">Početna</a>
                             <a href="kategorija.php?kategorija=politika">Politika</a>
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
-                            <a href="administrator.php">Administracija</a>
+                            <a href="administracija.php">Administracija</a>
                             <a href="unos.html">Unos vijesti</a>
                         </div>
                     </div>

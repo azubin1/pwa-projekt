@@ -205,3 +205,20 @@ input{
     display: block;
     width: 100%;
 }
+.formadmin{
+    width: 100%;
+}
+.form-item{
+    width: 100%;
+    margin: auto;
+}
+.lijevo{
+    display: flex;
+    justify-items: left;
+    margin-bottom: 5px;
+}
+.lijevo div{
+    display: flex;
+    justify-content: left;
+    margin: 0;
+}

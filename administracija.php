@@ -1,13 +1,9 @@
 <?php
 include 'connect.php';
 define('direktorij', 'slike/');
-
-$id=$_GET['id'];
-$upit = "SELECT * FROM vijesti WHERE id=$id";
+$upit="SELECT * FROM vijesti";
 $odg=mysqli_query($con, $upit);
-$red=mysqli_fetch_array($odg);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,11 +13,7 @@ $red=mysqli_fetch_array($odg);
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <title>
-        <?php
-         echo $red['naslov'];
-        ?>
-    </title>
+    <title class="titl">Administracija</title>
 </head>
 <body>
     <div class="centriraj">
@@ -43,38 +35,39 @@ $red=mysqli_fetch_array($odg);
                 </div>
             </nav>
         </header>
-        <section class="tekstclanka">
-            <p id="kategorije">
-                <?php
-                    echo $red['kategorija'];
-                ?>
-            </p>
-            <div class="naslovdatum">
-                <h1>
+        <section class="clanci">
+            <div class="bclanka">
+                <h2 class="podstranica">Popis vijesti</h2>
+                <section>
                     <?php
-                        echo $red['naslov'];
+                    $i=0;
+                        while($red=mysqli_fetch_array($odg)){
+                            $i++;
+                            echo '<a href="clanakadmin.php?id='.$red['id'].'">
+                                ';
+                            echo '<article>
+                                ';
+                            echo '<div class="slika">
+                                ';
+                            echo '<img src="' .direktorij. $red['slika']. '" alt='.$red['slika'].'>
+                            ' ;
+                            echo '</div>
+                            ';
+                            echo '<p>'.$red['kategorija'].'</p>
+                            ';
+                            echo '<h3>'. $red['naslov']. '</h3>
+                            ';
+                            echo '</article>
+                            ';
+                            echo '</a>
+                            ';
+                            if($i%3==0){
+                                echo '</section><section>';
+                            }
+                        }
                     ?>
-                </h1>
-                <p>
-                    <?php
-                        echo $red['datum'];
-                    ?>
-                </p>
+                </section>
             </div>
-                <p id="ispodnaslova">
-                    <?php
-                        echo $red['sazetak'];
-                    ?>
-                </p>
-                <?php
-                    echo '<img src="' .direktorij. $red['slika']. '" alt='.$red['slika'].' class="clanakslika">' ;
-                ?>
-            <hr>
-            <p>
-                <?php
-                    echo $red['sadrzaj'];
-                ?>
-            </p>
         </section>
         <footer class="podnozje">
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>

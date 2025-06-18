@@ -32,9 +32,9 @@ $odg=mysqli_query($con, $upit);
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
-                            <a href="kategorija.php?id=politika">Politika</a>
-                            <a href="kategorija.php?id=zdravlje">Zdravlje</a>
-                            <a href="administrator.php">Administracija</a>
+                            <a href="kategorija.php?kategorija=politika">Politika</a>
+                            <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
+                            <a href="administracija.php">Administracija</a>
                             <a href="unos.html">Unos vijesti</a>
                         </div>
                     </div>
