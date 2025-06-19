@@ -55,7 +55,7 @@ define('direktorija', 'slike/');
                         mysqli_stmt_store_result($stmt);
                     }
                     if(mysqli_stmt_num_rows($stmt) > 0){
-                        $poruka='Korisničko ime je već zauzeto!';
+                        $poruka ='<div class="korisnik"> Korisničko ime je već zauzeto!</div>';
                     }else{
                         // Ako ne postoji korisnik s tim korisničkim imenom - Registracija korisnika u bazi pazeći na SQL injection
                         $sql = "INSERT INTO korisnik (ime, prezime, korisnicko_ime, lozinka, razina) VALUES (?, ?, ?, ?, ?)";
@@ -71,9 +71,10 @@ define('direktorija', 'slike/');
 
                 //Registracija je prošla uspješno
                 if($registriran == true) {
+                    echo '<div class="korisnik">';
                     echo '<h1>Korisnik je uspješno registriran!</h1>';
-                    echo '<div></div>';
                     echo '<p>Molim vas ulogirajte se.</p>';
+                    echo '</div>';
                 } else {
                     //registracija nije protekla uspješno ili je korisnik prvi put došao na stranicu
                 ?>
@@ -180,6 +181,11 @@ define('direktorija', 'slike/');
                 <?php
                     }
                 ?>
+        </section>
+        <section>
+            <?php
+                echo $poruka;
+            ?>
         </section>
         <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>
