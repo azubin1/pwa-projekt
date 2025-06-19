@@ -165,7 +165,7 @@ define('direktorija', 'slike/');
                             poljeLozinka.style.border="1px dashed red"; 
                             poljePonovljenaLozinka.style.border="1px dashed red"; 
                             document.getElementById("porukaLozinka").innerHTML="Lozinke nisu iste!<hr>"; 
-                            document.getElementById("porukaPonovljenaLozinka").innerHTML="  Lozinke nisu iste!<br>"; 
+                            document.getElementById("porukaPonovljenaLozinka").innerHTML=" Lozinke nisu iste!<br>"; 
                         } else { 
                             poljeLozinka.style.border="1px solid green"; 
                             poljePonovljenaLozinka.style.border="1px solid green"; 

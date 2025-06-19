@@ -4,6 +4,43 @@ include 'connect.php';
 define('direktorij', 'slike/');
 $upit="SELECT * FROM vijesti";
 $odg=mysqli_query($con, $upit);
+
+// Provjera da li je korisnik došao s login forme 
+if (isset($_POST['prijava'])) { 
+    // Provjera da li korisnik postoji u bazi uz zaštitu od SQL injectiona 
+    $prijavaImeKorisnika = $_POST['korisnickoIme']; 
+    $prijavaLozinkaKorisnika = $_POST['lozinka']; 
+    $sql = "SELECT korisnicko_ime, lozinka, razina FROM korisnik 
+            WHERE korisnicko_ime = ?"; 
+    $stmt = mysqli_stmt_init($dbc); 
+    if (mysqli_stmt_prepare($stmt, $sql)) { 
+        mysqli_stmt_bind_param($stmt, 's', $prijavaImeKorisnika); 
+        mysqli_stmt_execute($stmt); 
+        mysqli_stmt_store_result($stmt); 
+    } 
+    mysqli_stmt_bind_result($stmt, $imeKorisnika, $lozinkaKorisnika, $levelKorisnika); 
+    mysqli_stmt_fetch($stmt); 
+
+    //Provjera lozinke 
+    if (password_verify($_POST['lozinka'], $lozinkaKorisnika) && 
+    mysqli_stmt_num_rows($stmt) > 0) { 
+        $uspjesnaPrijava = true; 
+
+        // Provjera da li je admin 
+        if($levelKorisnika == 1) { 
+            $admin = true; 
+        } 
+        else { 
+            $admin = false; 
+        } 
+
+        //postavljanje session varijabli 
+        $_SESSION['$korisnickoIme'] = $imeKorisnika; 
+        $_SESSION['$razina'] = $levelKorisnika; 
+    } else { 
+        $uspjesnaPrijava = false; 
+    } 
+} 
 ?>
 <!DOCTYPE html>
 <html lang="en">
