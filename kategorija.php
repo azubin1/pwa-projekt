@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 define('direktorij', 'slike/');
 $kategorija=$_GET['kategorija'];
@@ -26,16 +27,16 @@ $odg=mysqli_query($con, $upit);
         <header>
             <nav>
                 <div class="navigacija">
-                    <img src="slike/logo.png" id="logo" alt="Stern logo">
-                    <img src="slike/stern.png" id="stern" alt="stern">
-                    <br><br><br>
+                    <img src="slike/logo.png" id="logo" alt="logo">
+                    <img src="slike/f1.png" id="f1" alt="Formula 1">
+                    <br><br>
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
                             <a href="kategorija.php?kategorija=politika">Politika</a>
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="unos.php">Unos vijesti</a>
                             <a href="prijava.php">Prijava</a>
                         </div>
                     </div>

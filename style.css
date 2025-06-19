@@ -17,14 +17,7 @@ header{
     flex-direction: column;
     width: 70%;
     margin: 0px auto;
-    margin-top: 0px;
 }
-/*.centriraj{
-    display: block;
-    width: 70%;
-    margin: auto;
-    margin-top: 0px;
-}*/
 footer{
     display: flex;
     width: 100%;
@@ -35,14 +28,18 @@ footer{
 #logo{
     position: relative;
     float: left;
-    width: 75px;
+    width: 200px;
 }
-#stern{
+#f1{
     position: relative;
     float: left;
     width: 190px;
     height: 100%;
-    margin-top: -5px; 
+    margin-top: 5px;
+    margin-left: 10px;
+}
+.plutaj{
+    margin-left: -10px;
 }
 .dolje{
     display: flex;
@@ -52,9 +49,7 @@ footer{
 nav a{
     text-decoration: none;
     color: black;
-    margin: 5px;
-    margin-left: 10px;
-    margin-bottom: 0px;
+    margin: 5px 5px 0px 10px;
 }
 nav a:hover{
     color: red;
@@ -126,7 +121,8 @@ h3{
     color: rgb(57, 57, 57);
 }
 hr{
-    color: rgb(198, 198, 198);
+    border: 1px solid red;
+    margin-top: 1px;
 }
 .forma{
     width: 100%;
@@ -147,26 +143,22 @@ form{
 }
 @media only screen and (max-width:800px){
     form{
-        display: block;
         width: 100%;
-        margin: auto;
     }
 
     .form-item{
         width: 70%;
-        margin: auto;
     }
     .slika{
-        overflow: hidden;
         height: 100px;
-        width: 100%;
     }
+    .prijava{
+        width: 70%;
+}
 }
 @media only screen and (max-width:1300px){
     .slika{
-        overflow: hidden;
         height: 150px;
-        width: 100%;
     }
 }
     
@@ -256,4 +248,12 @@ input{
     justify-content: center;
     align-items: center;
     justify-items: center;
+}
+#crvenhr{
+    border: 2px solid red;
+    margin-top: -10px;
+}
+#dijeliclanak{
+    border: 1px solid rgb(198, 198, 198);
+    margin-top: 2px;
 }

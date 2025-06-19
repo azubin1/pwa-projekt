@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,9 +17,9 @@
         <header>
             <nav>
                 <div class="navigacija">
-                    <img src="slike/logo.png" id="logo" alt="Stern logo">
-                    <img src="slike/stern.png" id="stern" alt="stern">
-                    <br><br><br>
+                    <img src="slike/logo.png" id="logo" alt="logo">
+                    <img src="slike/f1.png" id="f1" alt="Formula 1">
+                    <br><br>
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
@@ -35,7 +38,7 @@
                 <div class="form-item">
                     <label for="naslov">Naslov vijesti</label>
                     <div class="form-field">
-                        <input type="text" name="naslov" id="naslov" class="form-field-textual" autofocus required>
+                        <input type="text" name="naslov" id="naslov" maxlength="150" class="form-field-textual" autofocus required>
                     </div>
                 </div>
                 <div class="form-item">

@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'connect.php';
 define('direktorij', 'slike/');
 
@@ -28,16 +29,16 @@ $red=mysqli_fetch_array($odg);
         <header>
             <nav>
                 <div class="navigacija">
-                    <img src="slike/logo.png" id="logo" alt="Stern logo">
-                    <img src="slike/stern.png" id="stern" alt="stern">
-                    <br><br><br>
+                    <img src="slike/logo.png" id="logo" alt="logo">
+                    <img src="slike/f1.png" id="f1" alt="Formula 1">
+                    <br><br>
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
                             <a href="kategorija.php?kategorija=politika">Politika</a>
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="unos.php">Unos vijesti</a>
                             <a href="prijava.php">Prijava</a>
                         </div>
                     </div>
@@ -49,7 +50,7 @@ $red=mysqli_fetch_array($odg);
                 <div class="sire">
                     <label for="naslov">Naslov vijesti</label>
                     <div class="form-field">
-                        <input type="text" name="naslov" id="naslov" class="form-field-textual" 
+                        <input type="text" name="naslov" id="naslov" maxlength="150" class="form-field-textual" 
                             <?php
                                 echo " value='". $red['naslov']."'";
                             ?>
@@ -59,21 +60,13 @@ $red=mysqli_fetch_array($odg);
                 <div class="sire">
                     <label for="sazetak">Kratki sadržaj vijesti (do 50 znakova)</label>
                     <div class="form-field">
-                        <textarea name="sazetak" id="sazetak" cols="30" rows="10" class="form-field-textual" required>
-                            <?php
-                                echo $red['sazetak'];
-                            ?>
-                        </textarea>
+                        <textarea name="sazetak" id="sazetak" cols="30" rows="10" class="form-field-textual" required><?php echo $red['sazetak'];?></textarea>
                     </div>
                 </div>
                 <div class="sire">
                     <label for="sadrzaj">Sadržaj vijesti</label>
                     <div class="form-field">
-                        <textarea name="sadrzaj" id="sadrzaj" cols="30" rows="10" class="form-field-textual" required>
-                            <?php
-                                echo $red['sadrzaj'];
-                            ?>
-                        </textarea>
+                        <textarea name="sadrzaj" id="sadrzaj" cols="30" rows="10" class="form-field-textual" required><?php echo $red['sadrzaj'];?></textarea>
                     </div>
                 </div>
                 <div class="sire">
@@ -112,9 +105,9 @@ $red=mysqli_fetch_array($odg);
                             <span>
                             <?php
                                 if($red['arhiva']==0){
-                                    echo '<input type="checkbox" name="archive" id="archive"/>';
+                                    echo '<input type="checkbox" name="arhiva" id="arhiva"/>';
                                 }else {
-                                    echo '<input type="checkbox" name="archive" id="archive" checked/>';
+                                    echo '<input type="checkbox" name="arhiva" id="arhiva" checked/>';
                                 }
                             ?>
                             </span>
@@ -147,8 +140,6 @@ if(isset($_POST['izbrisi'])){
     $id=$_POST['id'];
     $brisi="DELETE FROM vijesti WHERE id=$id ";
     $izbrisano=mysqli_query($con, $brisi);
-    $zatvori = file_get_contents('administracija.php');
-    echo $zatvori;
 }
 
 if(isset($_POST['izmjeni'])){
@@ -164,7 +155,6 @@ if(isset($_POST['izmjeni'])){
         $arhiva=0;
     }
 
-
     $direktorij='slike/'.$slika;
     move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
 
@@ -172,5 +162,7 @@ if(isset($_POST['izmjeni'])){
     WHERE id='$id'";
 
     $izmjenjeno=mysqli_query($con,$izmjena) or die('Greška u povezivanju');
+    /*header("Location: " . "administracija.php", true);*/
 }
+mysqli_close($con);
 ?>

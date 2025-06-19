@@ -1,5 +1,7 @@
 <?php
+session_start();
 include 'connect.php';
+include 'insert.php';
 
 if(isset($_POST['naslov'],$_POST['sazetak'],$_POST['sadrzaj'],$_FILES['slika']['name'],$_POST['kategorija'])){
     $naslov=$_POST['naslov'];
@@ -7,23 +9,7 @@ if(isset($_POST['naslov'],$_POST['sazetak'],$_POST['sadrzaj'],$_FILES['slika']['
     $sadrzaj=$_POST['sadrzaj'];
     $slika=$_FILES['slika']['name'];
     $kategorija=$_POST['kategorija'];
-    $datum=date('d.m.Y');
-    if(isset($_POST['arhiva'])){
-        $arhiva=1;
-    }else{
-        $arhiva=0;
-    }
-
-    $direktorij='slike/'.$slika;
-    move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
-
-    $upit="INSERT INTO vijesti (datum, naslov, sazetak, sadrzaj, slika, kategorija, arhiva)
-        VALUES ('$datum', '$naslov', '$sazetak', '$sadrzaj', '$slika', '$kategorija', '$arhiva')";
-
-    $rezultat=mysqli_query($con,$upit) or die('Greška u povezivanju');
 }
-
-mysqli_close($con);
 ?>
 
 
@@ -47,16 +33,16 @@ mysqli_close($con);
         <header>
             <nav>
                 <div class="navigacija">
-                    <img src="slike/logo.png" id="logo" alt="Stern logo">
-                    <img src="slike/stern.png" id="stern" alt="stern">
-                    <br><br><br>
+                    <img src="slike/logo.png" id="logo" alt="logo">
+                    <img src="slike/f1.png" id="f1" alt="Formula 1">
+                    <br><br>
                     <div class="plutaj">
                         <div class="dolje">
                             <a href="index.php">Početna</a>
                             <a href="kategorija.php?kategorija=politika">Politika</a>
                             <a href="kategorija.php?kategorija=zdravlje">Zdravlje</a>
                             <a href="administracija.php">Administracija</a>
-                            <a href="unos.html">Unos vijesti</a>
+                            <a href="unos.php">Unos vijesti</a>
                             <a href="prijava.php">Prijava</a>
                         </div>
                     </div>
