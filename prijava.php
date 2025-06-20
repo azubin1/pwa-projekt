@@ -1,5 +1,49 @@
 <?php
 session_start();
+include 'connect.php';
+$poruka="";
+$uspjesnaPrijava = false;
+$admin = false;
+$msg = "";
+$nepostojeciKorisnik = false;
+// Provjera da li je korisnik došao s login forme 
+if (isset($_POST['prijava'])) { 
+    // Provjera da li korisnik postoji u bazi uz zaštitu od SQL injectiona 
+    $prijavaImeKorisnika = $_POST['korisnicko_ime']; 
+    $prijavaLozinkaKorisnika = $_POST['lozinka']; 
+    $sql = "SELECT korisnicko_ime, lozinka, razina FROM korisnik 
+            WHERE korisnicko_ime = ?"; 
+    $stmt = mysqli_stmt_init($con); 
+    if (mysqli_stmt_prepare($stmt, $sql)) { 
+        mysqli_stmt_bind_param($stmt, 's', $prijavaImeKorisnika); 
+        mysqli_stmt_execute($stmt); 
+        mysqli_stmt_store_result($stmt); 
+    } 
+    mysqli_stmt_bind_result($stmt, $imeKorisnika, $lozinkaKorisnika, $levelKorisnika); 
+    mysqli_stmt_fetch($stmt); 
+
+    //Provjera lozinke 
+    if (password_verify($_POST['lozinka'], $lozinkaKorisnika) && mysqli_stmt_num_rows($stmt) > 0) { 
+        $uspjesnaPrijava = true; 
+
+        // Provjera da li je admin 
+        if($levelKorisnika == 1) { 
+            $admin = true; 
+        } 
+        else { 
+            $admin = false; 
+        } 
+        $poruka='Uspješna prijava<br><a href="administracija.php">Preusmjeri na administraciju</a>';
+        //postavljanje session varijabli 
+        $_SESSION['$korisnicko_ime'] = $imeKorisnika; 
+        $_SESSION['$razina'] = $levelKorisnika; 
+        } else { 
+            $uspjesnaPrijava = false; 
+            $poruka= 'Neuspješna prijava!<br><a href="registracija.php">Nemaš račun?</a>';
+        } 
+}
+
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -48,13 +92,48 @@ session_start();
                     </div>
                 </div>
                 <div class="form-item posalji">
-                    <button type="submit" value="Prijava">Prijavi se</button> 
+                    <button type="submit" value="Prijava" name="prijava" id="prijavi">Prijavi se</button> 
                     <button type="reset" value="Poništi">Poništi</button> 
                 </div>
             </form>
+                <script type="text/javascript">
+                    document.getElementById("prijavi").onclick = function(event) {
+                    var slanjeForme = true;
+                    // Korisničko ime mora biti uneseno
+                    var poljeKorisnickoIme = document.getElementById("korisnicko_ime"); 
+                    var korisnickoIme = document.getElementById("korisnicko_ime").value; 
+                    if (korisnickoIme.length == 0) { 
+                        slanjeForme = false; 
+                        poljeKorisnickoIme.style.border="1px dashed red"; 
+                        document.getElementById("porukaKorisnickoIme").innerHTML="Unesite korisničko ime!<hr>"; 
+                    } else { 
+                        poljeKorisnickoIme.style.border="1px solid green"; 
+                        document.getElementById("porukaKorisnickoIme").innerHTML=""; 
+                    } 
+
+                    // Provjera lozinke
+                    var poljeLozinka = document.getElementById("lozinka");
+                    var lozinka = document.getElementById("lozinka").value;
+                    var poljePonovljenaLozinka = document.getElementById("ponovilozinku");
+                    var ponovljenalozinka = document.getElementById("ponovilozinku").value;
+                    if (lozinka.length == 0){ 
+                        slanjeForme = false; 
+                        poljeLozinka.style.border="1px dashed red"; 
+                        document.getElementById("porukaLozinka").innerHTML="Lozinke nisu iste!<hr>"; 
+                    } else { 
+                        poljeLozinka.style.border="1px solid green"; 
+                        document.getElementById("porukaLozinka").innerHTML=""; 
+                    } 
+                    if (slanjeForme != true) {
+                        event.preventDefault();
+                    }
+                };
+                </script>
         </section>
         <section id=registrirajse>
-            <a href="registracija.php">Nemaš račun?</a>
+            <?php
+                echo $poruka;
+            ?>
         </section>
         <footer>
             <p>Astrid Zubin, azubin@tvz.hr, 2025</p>

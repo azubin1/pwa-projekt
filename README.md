@@ -1,2 +1,3 @@
 # pwa-projekt
-IMPORT stern.sql na http://localhost/phpmyadmin/index.php prije upotrebe
+Prije pokretanja premjestiti mapu u htdocs, uključiti XAMPP, te na adresi http://localhost/phpmyadmin/index.php importati bazu "formula1.sql".
+Web sjedište pokrenuti preko "pwa-projekt.code-workspace" radi jednostavnosti.

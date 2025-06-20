@@ -4,7 +4,7 @@ header('Content-Type: text/html; charset=utf-8');
 $servername="localhost";
 $username="root";
 $password="";
-$baza="stern";
+$baza="formula1";
 
 
 $con = mysqli_connect($servername, $username, $password, $baza) or die('Greška pri spajanju.');

@@ -81,7 +81,7 @@ if(isset($_POST['naslov'],$_POST['sazetak'],$_POST['sadrzaj'],$_FILES['slika']['
                     echo $slika;
                 ?>" 
             class="clanakslika">
-            <hr>
+            <hr id=dijeliskripta>
             <p>
                 <?php
                     echo $sadrzaj;
