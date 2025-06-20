@@ -145,7 +145,6 @@ form{
     form{
         width: 100%;
     }
-
     .form-item{
         width: 70%;
     }
@@ -154,7 +153,10 @@ form{
     }
     .prijava{
         width: 70%;
-}
+    }
+    .bclanka section{
+        flex-direction: column;
+    }
 }
 @media only screen and (max-width:1300px){
     .slika{
@@ -233,7 +235,8 @@ input{
 #registrirajse{
     display: flex;
     padding: 5px;
-    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 #registrirajse a{
     color: red;
@@ -261,4 +264,25 @@ input{
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.prijavise{
+    color: red;
+}
+.prijavise:hover{
+    color: black;
+}
+.prijavise:visited{
+    color: red;
+}
+.logout{
+    display: flex;
+    margin: 0px;
+}
+#adminprijava{
+    width: 40%;
+}
+.buttonprijavi{
+    border-radius: 5px;
+    color: white;
+    background-color: black;
 }

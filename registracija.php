@@ -74,6 +74,8 @@ define('direktorija', 'slike/');
                     echo '<div class="korisnik">';
                     echo '<h1>Korisnik je uspješno registriran!</h1>';
                     echo '<p>Molim vas ulogirajte se.</p>';
+                    echo '<br>';
+                    echo '<a href="prijava.php" class"prijavise">Prijavi se</a>';
                     echo '</div>';
                 } else {
                     //registracija nije protekla uspješno ili je korisnik prvi put došao na stranicu
