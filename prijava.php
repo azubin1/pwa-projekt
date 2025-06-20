@@ -41,20 +41,8 @@ if (isset($_POST['prijava'])) {
             $uspjesnaPrijava = false; 
             $poruka= 'Neuspješna prijava!<br><a href="registracija.php">Nemaš račun?</a>';
         } 
-        // Pokaži poruku da je korisnik uspješno prijavljen, ali nije administrator
-        } else if ($uspjesnaPrijava == true && $admin == false) {
-            echo '<p>Bok ' . $imeKorisnika . '! <br>Uspješno ste prijavljeni, ali niste administrator.</p>';
-            echo '<form class="logout" action="" method="post">
-                        <input type="hidden" name="logout" value="true">
-                        <button class="buttonprijavi type="submit">Logout</button>
-                    </form>';
-        } else if (isset($_SESSION['$korisnicko_ime']) && $_SESSION['$razina'] == 0) {
-            echo '<p>Bok ' . $_SESSION['$korisnicko_ime'] . '! <br>Uspješno ste prijavljeni, ali niste administrator.</p>';
-            echo '<form class="logout" action="" method="post">
-                        <input type="hidden" name="logout" value="true">
-                        <button class="buttonprijavi" type="submit">Logout</button>
-                    </form>';
-                    }
+}
+
 
 ?>
 <!DOCTYPE html>
