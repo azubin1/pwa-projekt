@@ -380,3 +380,8 @@ input{
 #nemasrac a:hover{
     color: black;
 }
+.adminprijava{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
