@@ -39,7 +39,7 @@ if (isset($_POST['prijava'])) {
         $_SESSION['$razina'] = $levelKorisnika; 
         } else { 
             $uspjesnaPrijava = false; 
-            $poruka= 'Neuspješna prijava!<br><a href="registracija.php">Nemaš račun?</a>';
+            $poruka= 'Neuspješna prijava!<br>';
         } 
 }
 
@@ -94,6 +94,9 @@ if (isset($_POST['prijava'])) {
                 <div class="form-item posalji">
                     <button type="submit" value="Prijava" name="prijava" id="prijavi">Prijavi se</button> 
                     <button type="reset" value="Poništi">Poništi</button> 
+                </div>
+                <div id="nemasrac">
+                    <a href="registracija.php">Nemaš račun?</a>
                 </div>
             </form>
                 <script type="text/javascript">

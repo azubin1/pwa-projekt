@@ -22,7 +22,7 @@ footer{
     display: flex;
     width: 100%;
     justify-content: center;
-    padding: 20px;
+    padding: 20px 0px;
     margin-top: auto;
 }
 #logo{
@@ -45,7 +45,7 @@ footer{
     display: flex;
     align-items: end;
     font-weight: 500;
-    margin-top: 6px;
+    margin-top: 5px;
 }
 nav a{
     text-decoration: none;
@@ -150,9 +150,6 @@ form{
     .form-item{
         width: 70%;
     }
-    .slika{
-        height: 200px;
-    }
     .prijava{
         width: 70%;
     }
@@ -170,7 +167,7 @@ form{
     }
     .navigacija {
         display: flex;
-        margin-top: 5px;
+        margin-top: 4px;
         justify-content: center;
         flex-wrap: wrap;
         flex-direction: column;
@@ -199,6 +196,22 @@ form{
         margin-left: 5px;
         display: flex;
         justify-content: center;
+    }
+    .naslovdatum{
+        flex-direction: column;
+    }
+    #ispodnaslova{
+        padding-top: 5px;
+    }
+}
+@media only screen and (max-width:600px){
+    .slika{
+        height: 200px;
+    }
+}
+@media only screen and (max-width:801px) and (min-width:601px){
+    .slika{
+        height: 250px;
     }
 }
 @media only screen and (max-width:911px){
@@ -321,7 +334,7 @@ input{
 }
 #crvenhr{
     border: 2px solid red;
-    margin-top: -10px;
+    margin-top: -0px;
 }
 #dijeliclanak{
     border: 1px solid rgb(198, 198, 198);
@@ -356,4 +369,19 @@ input{
 #dijeliskripta{
     border: 1px solid rgb(198, 198, 198);
     margin-top: 2px;
+}
+#nemasrac{
+    display: flex;
+    justify-content: center;
+}
+#nemasrac a{
+    color: red;
+}
+#nemasrac a:hover{
+    color: black;
+}
+.adminprijava{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

@@ -21,7 +21,7 @@ $upit="INSERT INTO vijesti (datum, naslov, sazetak, sadrzaj, slika, kategorija, 
 
 $stmt=mysqli_stmt_init($con);
 if (mysqli_stmt_prepare($stmt, $upit)){
-    mysqli_stmt_bind_param($stmt, 'ssssssd', $datum, $naslov, $sazetak, $sadrzaj, $slika, $kategorija, $arhiva);
+    mysqli_stmt_bind_param($stmt, 'ssssssi', $datum, $naslov, $sazetak, $sadrzaj, $slika, $kategorija, $arhiva);
     mysqli_stmt_execute($stmt);
 }
 

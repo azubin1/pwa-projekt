@@ -94,6 +94,15 @@ $red=mysqli_fetch_array($odg);
                                 echo 'value="'. $red['kategorija']. '"';
                             ?>
                         required>
+                            <option 
+                                <?php
+                                    echo 'value="'.$red['kategorija'].'"';
+                                ?>
+                            >
+                                <?php
+                                    echo ucwords(strtolower($red['kategorija']));
+                                ?>
+                            </option>
                             <option value="politika">Politika</option>
                             <option value="zdravlje">Zdravlje</option>
                         </select>
@@ -117,9 +126,16 @@ $red=mysqli_fetch_array($odg);
                 <div class="sire">
                     <input type="hidden" name="id" class="form-field-textual" 
                         <?php
-                            echo 'value="'.$red['id'].'" ';
+                            echo 'value="'.$red['id'].'"';
                         ?>
                     >
+                </div>
+                <div class="sire">
+                    <input type="hidden" name="nemaslike" class="form-field-textual"
+                            <?php
+                                echo 'value="'.$red['slika'].'"';
+                            ?>
+                        >
                 </div>
                 <div class="sire posalji">
                     <button type="reset" value="Poništi">Poništi</button>
@@ -146,7 +162,11 @@ if(isset($_POST['izmjeni'])){
     $naslov=$_POST['naslov'];
     $sazetak=$_POST['sazetak'];
     $sadrzaj=$_POST['sadrzaj'];
-    $slika=$_FILES['slika']['name'];
+    if($_FILES['slika']['size']==0){
+        $slika=$_POST['nemaslike'];
+    }else{
+        $slika=$_FILES['slika']['name'];
+    }
     $kategorija=$_POST['kategorija'];
     $datum=date('d.m.Y');
     if(isset($_POST['arhiva'])){
@@ -155,14 +175,18 @@ if(isset($_POST['izmjeni'])){
         $arhiva=0;
     }
 
-    $direktorij='slike/'.$slika;
+    $direktorij=direktorij.$slika;
     move_uploaded_file($_FILES['slika']['tmp_name'],$direktorij);
 
-    $izmjena="UPDATE vijesti SET naslov='$naslov', sazetak='$sazetak', sadrzaj='$sadrzaj', slika='$slika', kategorija='$kategorija', arhiva='$arhiva', datum='$datum'
-    WHERE id='$id'";
+    $izmjena="UPDATE vijesti SET datum = ?, naslov = ?, sazetak = ?, sadrzaj = ?, slika = ?, kategorija = ?, arhiva = ?
+                WHERE id='$id'";
 
-    $izmjenjeno=mysqli_query($con,$izmjena) or die('Greška u povezivanju');
-    /*header("Location: " . "administracija.php", true);*/
+    $stmt=mysqli_stmt_init($con);
+
+    if (mysqli_stmt_prepare($stmt, $izmjena)){
+        mysqli_stmt_bind_param($stmt, 'ssssssi', $datum, $naslov, $sazetak, $sadrzaj, $slika, $kategorija, $arhiva);
+        mysqli_stmt_execute($stmt);
+    }
 }
 mysqli_close($con);
 ?>

@@ -6,7 +6,7 @@ $upit="SELECT * FROM vijesti";
 $odg=mysqli_query($con, $upit);
 $uspjesnaPrijava = false;
 $admin = false;
-$msg = "";
+$poruka = "";
 $nepostojeciKorisnik = false;
 
 // Provjera da li je korisnik došao s login forme 
@@ -42,6 +42,7 @@ if (isset($_POST['prijava'])) {
         $_SESSION['$razina'] = $levelKorisnika; 
     } else { 
         $uspjesnaPrijava = false; 
+        $poruka = '<p>Neuspješna prijava!</p><a href="registracija.php">Nemaš račun?</a>';
     } 
 } 
 //logout
@@ -132,7 +133,7 @@ if(isset($_POST['logout'])){
                                     <input type="hidden" name="logout" value="true">
                                     <button class="buttonprijavi" type="submit">Logout</button>
                                 </form>';
-                    } else if ($uspjesnaPrijava == false) {
+                    }else if($uspjesnaPrijava == false){
                 ?>
                     <section class="prijava">
                     <form id="adminprijava" enctype="multipart/form-data" action="" method="POST">
@@ -151,12 +152,7 @@ if(isset($_POST['logout'])){
                         <div class="form-item posalji">
                             <button type="submit" value="Prijava" name="prijava" id="prijavi">Prijavi se</button> 
                             <button type="reset" value="Poništi">Poništi</button> 
-                        </div>
-                            <?php
-                                if($nepostojeciKorisnik){
-                                    echo '<p class="adminUnknown">Nepoznati korisnik, molim vas da se registrirate <a href="registracija.php">ovdje</a>!</p>';
-                                }
-                            ?>
+                    </div>
                     </form>
                 <script type="text/javascript">
                     document.getElementById("prijavi").onclick = function(event) {
@@ -192,6 +188,11 @@ if(isset($_POST['logout'])){
                 };
                 </script>
             </div>
+        </section>
+        <section class="adminprijava">
+            <?php
+                echo $poruka;
+            ?>
         </section>
         <?php
                     }
